@@ -25,7 +25,6 @@ namespace TheOtherRoles
 
     public static class Helpers
     {
-
         public static Dictionary<string, Sprite> CachedSprites = new();
         public static bool ShowButtons
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using TheOtherRoles.Modules;
+using Hazel;
 
 namespace TheOtherRoles
 {
@@ -28,6 +29,9 @@ namespace TheOtherRoles
         public static bool hasImpostorVision { get { return CustomOptionHolder.madmateHasImpostorVision.getBool(); } }
         public static bool canSabotage { get { return CustomOptionHolder.madmateCanSabotage.getBool(); } }
         public static bool canFixComm { get { return CustomOptionHolder.madmateCanFixComm.getBool(); } }
+        public static bool canBeImpostor { get { return CustomOptionHolder.madmateCanBeInpostor.getBool(); } }
+
+        public static bool beImpostor = false;
 
         public static MadmateType madmateType { get { return (MadmateType)CustomOptionHolder.madmateType.getSelection(); } }
         public static MadmateAbility madmateAbility { get { return (MadmateAbility)CustomOptionHolder.madmateAbility.getSelection(); } }
@@ -119,7 +123,16 @@ namespace TheOtherRoles
 
         public override void OnMeetingStart() { }
         public override void OnMeetingEnd() { }
-        public override void FixedUpdate() { }
+        public override void FixedUpdate()
+        {
+            if (beImpostor)
+            {
+                MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.MadmateBeImpostor, Hazel.SendOption.Reliable, -1);
+                writer.Write(player.PlayerId);
+                AmongUsClient.Instance.FinishRpcImmediately(writer);
+                RPCProcedure.MadmateBeImpostor(player.PlayerId);
+            }
+        }
         public override void OnKill(PlayerControl target) { }
 
         public override void OnDeath(PlayerControl killer = null)
@@ -174,6 +187,7 @@ namespace TheOtherRoles
         public static void Clear()
         {
             players = new List<Madmate>();
+            beImpostor = false;
         }
     }
 }

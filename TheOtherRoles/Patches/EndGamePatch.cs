@@ -8,6 +8,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using System.Text;
+using Hazel;
 using TheOtherRoles.Modules;
 using TheOtherRoles.Utilities;
 
@@ -101,7 +102,6 @@ namespace TheOtherRoles.Patches
     [HarmonyPatch(typeof(AmongUsClient), nameof(AmongUsClient.OnGameEnd))]
     public class OnGameEndPatch
     {
-
         public static void Prefix(AmongUsClient __instance, [HarmonyArgument(0)] ref EndGameResult endGameResult)
         {
             Camouflager.resetCamouflage();
@@ -939,7 +939,6 @@ namespace TheOtherRoles.Patches
             {
                 public int TeamImpostorsAlive { get; set; }
                 public int TeamJackalAlive { get; set; }
-                public int TeamKingdomAlive { get; set; }
                 public int TeamLoversAlive { get; set; }
                 public int CouplesAlive { get; set; }
                 public int TeamCrew { get; set; }
@@ -1020,6 +1019,11 @@ namespace TheOtherRoles.Patches
                     if (Godfather.godfather?.isDead() == true && Mafioso.mafioso?.isDead() == true && Janitor.janitor?.isDead() == false)
                     {
                         numImpostorsAlive = 0;
+                    }
+
+                    if (numImpostorsAlive == 0 && Madmate.canBeImpostor && PlayerControl.LocalPlayer.hasModifier(ModifierType.Madmate))
+                    {
+                        Madmate.beImpostor = true;
                     }
 
                     TeamCrew = numCrew;

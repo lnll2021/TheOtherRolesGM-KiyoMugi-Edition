@@ -115,6 +115,7 @@ namespace TheOtherRoles
         CamouflagedComms,
         ResetCamouflagedComms,
         EaterEat,
+        MadmateBeImpostor,
     }
 
     public static class RPCProcedure
@@ -346,12 +347,12 @@ namespace TheOtherRoles
 
             Sheriff role = Sheriff.getRole(sheriff);
             if (role != null)
-//                if (!CustomOptionHolder.yakuzaShotsShare.getBool())
-                    role.numShots--;
-//                else
-//                    Gun.shareShots--;
+                //                if (!CustomOptionHolder.yakuzaShotsShare.getBool())
+                role.numShots--;
+            //                else
+            //                    Gun.shareShots--;
 
-//シェリフの弾数制限を修正するため、場当たり的にヤクザの弾数共有破壊してます。そっちまで対応する気力ないんで直すんならそちらで　by.hawk
+            //シェリフの弾数制限を修正するため、場当たり的にヤクザの弾数共有破壊してます。そっちまで対応する気力ないんで直すんならそちらで　by.hawk
 
 
             if (misfire)
@@ -1393,6 +1394,13 @@ namespace TheOtherRoles
             Camouflager.resetCamouflage();
         }
 
+        public static void MadmateBeImpostor(byte targetId)
+        {
+            PlayerControl player = Helpers.playerById(targetId);
+            player.eraseModifier(ModifierType.Madmate);
+            player.setRole(RoleType.Impostor);
+        }
+
         [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.HandleRpc))]
         class RPCHandlerPatch
         {
@@ -1727,6 +1735,9 @@ namespace TheOtherRoles
                         break;
                     case (byte)CustomRPC.EaterEat:
                         RPCProcedure.EaterEat(reader.ReadByte(), reader.ReadByte());
+                        break;
+                    case (byte)CustomRPC.MadmateBeImpostor:
+                        RPCProcedure.MadmateBeImpostor(reader.ReadByte());
                         break;
                 }
             }

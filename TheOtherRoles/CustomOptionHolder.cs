@@ -281,6 +281,7 @@ namespace TheOtherRoles
         public static CustomOption madmateAbility;
         public static CustomTasksOption madmateTasks;
         public static CustomOption madmateExilePlayer;
+        public static CustomOption madmateCanBeInpostor;
         public static CustomOption taskHackerEnabled;
         public static CustomOption taskHackerAddCrewNumTasks;
         public static CustomOption taskHackerNumTasks;
@@ -680,6 +681,7 @@ namespace TheOtherRoles
             madmateCanSabotage = CustomOption.Create(288, CustomOptionType.Modifier, "madmateCanSabotage", false, madmateSpawnRate);
             madmateCanFixComm = CustomOption.Create(289, CustomOptionType.Modifier, "madmateCanFixComm", true, madmateSpawnRate);
             madmateExilePlayer = CustomOption.Create(290, CustomOptionType.Modifier, "madmateExileCrewmate", false, madmateSpawnRate);
+            madmateCanBeInpostor = CustomOption.Create(294, CustomOptionType.Modifier, "madmateCanBeImpostor", false, madmateSpawnRate);
             //taskHackerEnabled = CustomOption.Create(291, CustomOptionType.Modifier, "taskHackerEnabled", false, madmateSpawnRate);
             //taskHackerNumTasks = CustomOption.Create(292, CustomOptionType.Modifier, "taskHackerAdditionalNumTasks", 5f, 1f, 10f, 1f, taskHackerEnabled);
             //taskHackerAddCrewNumTasks = CustomOption.Create(293, CustomOptionType.Modifier, "taskHackerAdditionalCrewNumTasks", 5f, 1f, 10f, 1f, taskHackerEnabled);
