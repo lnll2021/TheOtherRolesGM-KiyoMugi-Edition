@@ -916,7 +916,7 @@ namespace TheOtherRoles
 
             bakerySpawnRate = new CustomRoleOption(698, CustomOptionType.Crewmate, "bakery", Bakery.color, 15);
             bakeryEnableBombBread = CustomOption.Create(699, CustomOptionType.Crewmate, "bakeryEnableBombBread", true, bakerySpawnRate);
-            bakeryBombBreadRate = CustomOption.Create(697, CustomOptionType.Crewmate, "bakeryBombBreadRate", 1, 1, 100, 1, bakerySpawnRate, format: "unitPercent");
+            bakeryBombBreadRate = CustomOption.Create(697, CustomOptionType.Crewmate, "bakeryBombBreadRate", 1, 1, 100, 1, bakeryEnableBombBread, format: "unitPercent");
 
             timeReviverSpawnRate = new CustomRoleOption(7590, CustomOptionType.Crewmate, "timeReviver", TimeReviver.color, 15);
             //timeReviverDeathReport = CustomOption.Create(7591, CustomOptionType.Crewmate, "timeReviverDeathReport", false, timeReviverSpawnRate);

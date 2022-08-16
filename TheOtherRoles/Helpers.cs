@@ -736,28 +736,28 @@ namespace TheOtherRoles
 
         public static bool isSkeld(this PlayerControl player)
         {
-            if(PlayerControl.GameOptions.MapId == 0)
+            if (PlayerControl.GameOptions.MapId == 0)
                 return true;
             return false;
         }
 
         public static bool isMira(this PlayerControl player)
         {
-            if(PlayerControl.GameOptions.MapId == 1)
+            if (PlayerControl.GameOptions.MapId == 1)
                 return true;
             return false;
         }
 
         public static bool isPolus(this PlayerControl player)
         {
-            if(PlayerControl.GameOptions.MapId == 2)
+            if (PlayerControl.GameOptions.MapId == 2)
                 return true;
             return false;
         }
 
         public static bool isAirship(this PlayerControl player)
         {
-            if(PlayerControl.GameOptions.MapId == 4)
+            if (PlayerControl.GameOptions.MapId == 4)
                 return true;
             return false;
         }
