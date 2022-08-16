@@ -68,9 +68,6 @@ namespace TheOtherRoles
         {
             ModTranslation.Load();
             Logger = Log;
-            /*string path = "TheOtherHats";
-            if(!Directory.Exists(path))
-                Directory.CreateDirectory(path);*/
 
             DebugMode = Config.Bind("Custom", "Enable Debug Mode", false);
             StreamerMode = Config.Bind("Custom", "Enable Streamer Mode", false);
@@ -106,8 +103,8 @@ namespace TheOtherRoles
 
             Patches.FreeNamePatch.Initialize();
             Harmony.PatchAll();
-            // SubmergedCompatibility.Initialize();
-            // Patches.SubmergedPatch.Patch();
+            SubmergedCompatibility.Initialize();
+            Patches.SubmergedPatch.Patch();
         }
 
         public static Sprite GetModStamp()
