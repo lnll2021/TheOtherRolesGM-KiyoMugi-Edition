@@ -51,19 +51,19 @@ namespace TheOtherRoles.Objects
             if (AmongUsClient.Instance.GameState != InnerNet.InnerNetClient.GameStates.Started) return;
 
             //ここにベントを追加していく
-            if(PlayerControl.GameOptions.MapId == 4 && 
+            if(PlayerControl.GameOptions.MapId == 4 &&
                 CustomOptionHolder.enableAddCustomVent.getBool() &&
                 CustomOptionHolder.enableAirshipVaultMeetingArchiveVent.getBool()) //AirShip
             {
                 CustomVentPos.AirShipVentPos.VMAVent();
             }
-            else if(PlayerControl.GameOptions.MapId == 2 && 
+            else if(PlayerControl.GameOptions.MapId == 2 &&
                     CustomOptionHolder.enableAddCustomVent.getBool() &&
                     CustomOptionHolder.enablePolusWeaponSpecimenOfficeVent.getBool()) //Polus
             {
                 CustomVentPos.PolusVentPos.WOSVent();
             }
-            else if(PlayerControl.GameOptions.MapId == 0 && 
+            else if(PlayerControl.GameOptions.MapId == 0 &&
                     CustomOptionHolder.enableAddCustomVent.getBool() &&
                     CustomOptionHolder.enableSkeldStorageAdminO2Vent.getBool()) //Skeld
             {
@@ -73,7 +73,7 @@ namespace TheOtherRoles.Objects
             {
                 CustomVentPos.SubmergedVentPos.SLBVent();
             }*/
-            else if(PlayerControl.GameOptions.MapId == 1 && 
+            else if(PlayerControl.GameOptions.MapId == 1 &&
                     CustomOptionHolder.enableAddCustomVent.getBool() &&
                     CustomOptionHolder.enableMiraO2CommsYjiVent.getBool())
             {

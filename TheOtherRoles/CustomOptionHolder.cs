@@ -481,6 +481,9 @@ namespace TheOtherRoles
         public static CustomOption enableCockpitAdmin;
         public static CustomOption airshipReactorDuration;
 
+        public static CustomOption SabotageSettings;
+        public static CustomOption ReactorDuration;
+
         public static CustomOption enableAddCustomVent;
         public static CustomOption enableAirshipVaultMeetingArchiveVent;
         public static CustomOption enablePolusWeaponSpecimenOfficeVent;
@@ -969,6 +972,9 @@ namespace TheOtherRoles
             restrictAdmin = CustomOption.Create(30, CustomOptionType.General, "disableAdmin", 30f, 0f, 600f, 5f, restrictDevices, format: "unitSeconds");
             restrictCameras = CustomOption.Create(31, CustomOptionType.General, "disableCameras", 30f, 0f, 600f, 5f, restrictDevices, format: "unitSeconds");
             restrictVitals = CustomOption.Create(32, CustomOptionType.General, "disableVitals", 30f, 0f, 600f, 5f, restrictDevices, format: "unitSeconds");
+
+            SabotageSettings = CustomOption.Create(80, CustomOptionType.General, "SabotageSettings", false, specialOptions, isHeader: true);
+            ReactorDuration = CustomOption.Create(81, CustomOptionType.General, "ReactorDuration", 60f, 0f, 300f, 5f, SabotageSettings, format: "unitSeconds");
 
             airshipSettings = CustomOption.Create(56, CustomOptionType.General, "airshipSettings", false, specialOptions, isHeader: true);
             airshipAdminSettings = CustomOption.Create(58, CustomOptionType.General, "airshipAdminSettings", true, airshipSettings);

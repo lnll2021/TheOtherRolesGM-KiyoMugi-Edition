@@ -102,9 +102,9 @@ namespace TheOtherRoles
             RandomGeneratorPatch.Initialize();
 
             Patches.FreeNamePatch.Initialize();
-            Harmony.PatchAll();
             SubmergedCompatibility.Initialize();
             Patches.SubmergedPatch.Patch();
+            Harmony.PatchAll();
         }
 
         public static Sprite GetModStamp()
@@ -162,12 +162,6 @@ namespace TheOtherRoles
                 AmongUsClient.Instance.FinishRpcImmediately(writer);
                 RPCProcedure.impostorEnd();
                 Modules.Logger.SendInGame("ForceEnd(Impostor Win)");
-            }
-
-            //MeetingでResetされないバグあるから対策
-            if (Input.GetKeyDown(KeyCode.F2) && CustomOptionHolder.enableDiePlayerZoomInOut.getBool() && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started)
-            {
-                DiePlayer.resetZoom();
             }
 
             // F11&F12を変えた理由・・・誰かがSteamでスクショ撮ろうとして廃村したから

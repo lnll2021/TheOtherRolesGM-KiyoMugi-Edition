@@ -662,7 +662,6 @@ namespace TheOtherRoles.Patches
                                 return idX.CompareTo(idY);
                             }
                             return x.Status.CompareTo(y.Status);
-
                         });
 
                         bool plagueExists = AdditionalTempData.playerRoles.Any(x => x.Roles.Contains(RoleInfo.plagueDoctor));
