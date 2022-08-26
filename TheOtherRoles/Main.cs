@@ -57,7 +57,6 @@ namespace TheOtherRoles
         {
             ServerManager serverManager = FastDestroyableSingleton<ServerManager>.Instance;
             IRegionInfo[] regions = defaultRegions;
-
             var CustomRegion = new DnsRegionInfo(Ip.Value, "Custom", StringNames.NoTranslation, Ip.Value, Port.Value, false);
             regions = regions.Concat(new IRegionInfo[] { CustomRegion.CastFast<IRegionInfo>() }).ToArray();
             ServerManager.DefaultRegions = regions;
@@ -192,7 +191,7 @@ namespace TheOtherRoles
                 playerControl.SetColor(color);
                 playerControl.SetHat(HatManager.Instance.allHats[hat].ProductId, color);
                 playerControl.SetPet(HatManager.Instance.allPets[pet].ProductId, color);
-                playerControl.SetVisor(HatManager.Instance.allVisors[visor].ProductId);
+                playerControl.SetVisor(HatManager.Instance.allVisors[visor].ProductId, color);
                 playerControl.SetSkin(HatManager.Instance.allSkins[skin].ProductId, color);
                 playerControl.SetNamePlate(HatManager.Instance.allNamePlates[nameplate].ProductId);
                 GameData.Instance.RpcSetTasks(playerControl.PlayerId, new byte[0]);
