@@ -42,7 +42,10 @@ namespace TheOtherRoles.Patches
                 __instance.text.alignment = TMPro.TextAlignmentOptions.TopRight;
                 if (AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started)
                 {
-                    __instance.text.text = $"{baseCredentials}\n{__instance.text.text}";
+                    if (TheOtherRolesPlugin.DebugMode.Value)
+                        __instance.text.text = $"{baseCredentials}\n" + ModTranslation.getString("Position") + PlayerControl.LocalPlayer.GetTruePosition().ToString() + $"\n{__instance.text.text}";
+                    else
+                        __instance.text.text = $"{baseCredentials}\n{__instance.text.text}";
                     if (PlayerControl.LocalPlayer.Data.IsDead || (!(PlayerControl.LocalPlayer == null) && PlayerControl.LocalPlayer.isLovers()))
                     {
                         __instance.gameObject.GetComponent<AspectPosition>().DistanceFromEdge = new Vector3(2.0f, 0.1f, 0.5f);
@@ -54,7 +57,10 @@ namespace TheOtherRoles.Patches
                 }
                 else
                 {
-                    __instance.text.text = $"{baseCredentials}\n{ModTranslation.getString("creditsFull")}\n{__instance.text.text}";
+                    if (TheOtherRolesPlugin.DebugMode.Value)
+                        __instance.text.text = $"{baseCredentials}\n" + ModTranslation.getString("Position") + PlayerControl.LocalPlayer.GetTruePosition().ToString() + $"\n{__instance.text.text}";
+                    else
+                        __instance.text.text = $"{baseCredentials}\n{__instance.text.text}";
                     __instance.transform.localPosition = new Vector3(4f, __instance.transform.localPosition.y, __instance.transform.localPosition.z);
                 }
             }

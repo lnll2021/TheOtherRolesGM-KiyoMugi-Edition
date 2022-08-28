@@ -18,13 +18,4 @@ namespace TheOtherRoles.Patches
             }
         }
     }
-
-    [HarmonyPatch(typeof(ReactorSystemType), nameof(ReactorSystemType.RepairDamage))]
-    class ReactorMiniGameRepairPatch
-    {
-        static void Postfix(ReactorSystemType __instance)
-        {
-            __instance.Countdown = CustomOptionHolder.ReactorDuration.getFloat();
-        }
-    }
 }

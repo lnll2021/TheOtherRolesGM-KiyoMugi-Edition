@@ -13,11 +13,11 @@ namespace TheOtherRoles.Patches
         public static bool isBomb = false;
         public static System.Random bombBread = new System.Random();
         public static System.Random luckyBread = new System.Random();
-        public static int rate {get{return Mathf.RoundToInt(CustomOptionHolder.bakeryBombBreadRate.getFloat());}}
-        
+        public static int rate { get { return Mathf.RoundToInt(CustomOptionHolder.bakeryBombBreadRate.getFloat()); } }
+
         public static void Postfix(ExileController __instance)
         {
-            if(!Bakery.isBakeryAlive()) return;
+            if (!Bakery.isBakeryAlive()) return;
 
             int num = bombBread.Next(1, 101);
             int lnum = Bakery.lnum;
@@ -26,23 +26,22 @@ namespace TheOtherRoles.Patches
 
             string ExileStr;
 
-            if(Bakery.isBakeryAlive())
-            {   
-                
-                if(num >= 100 - rate && Bakery.enableBombBread) //爆発するパン
+            if (Bakery.isBakeryAlive())
+            {
+                if (num >= 100 - rate && Bakery.enableBombBread) //爆発するパン
                 {
                     ExileStr = ModTranslation.getString("BombBakeryText");
                     isBomb = true;
                 }
-                else if(lnum <= 20)
+                else if (lnum <= 20)
                 {
                     ExileStr = ModTranslation.getString("FrenchBakeryText");
                 }
-                else if(lnum > 20 && lnum <= 40)
+                else if (lnum > 20 && lnum <= 40)
                 {
                     ExileStr = ModTranslation.getString("AnpanBakeryText");
-                } 
-                else if(lnum > 90)
+                }
+                else if (lnum > 90)
                 {
                     ExileStr = ModTranslation.getString("MelonBakeryText");
                 }
@@ -58,10 +57,10 @@ namespace TheOtherRoles.Patches
                 {
                     breadText.transform.localPosition += new UnityEngine.Vector3(0f, -0.2f, 0f);
                 }
-                
+
                 breadText.gameObject.SetActive(true);
 
-                if(isBomb) //爆発するパンなら爆発させる
+                if (isBomb) //爆発するパンなら爆発させる
                 {
                     foreach (var bakery in Bakery.allPlayers)
                     {
@@ -75,16 +74,6 @@ namespace TheOtherRoles.Patches
                         }
                     }
                 }
-            }
-        }
-
-        [HarmonyPatch(typeof(ExileController), nameof(ExileController.ReEnableGameplay))]
-        public class BakeryChatDisable
-        {
-            static void Postfix(ExileController __instance)
-            {
-                //会議終了時、テキストを消す
-                breadText.gameObject.SetActive(false); 
             }
         }
     }
