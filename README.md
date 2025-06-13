@@ -6,7 +6,9 @@
 
 # Choose Readme Language
 
-## Readme の言語を選択してください
+# Readme の言語を選択してください
+
+# 选择自述文件语言
 
 [日本語](https://github.com/Dekokiyo/TheOtherRolesGM-KiyoMugi-Edition/blob/main/Readme_JP.md)\
 [English](https://github.com/Dekokiyo/TheOtherRolesGM-KiyoMugi-Edition/blob/main/Readme_EN.md)
