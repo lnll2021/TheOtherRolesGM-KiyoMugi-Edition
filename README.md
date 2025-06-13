@@ -10,3 +10,4 @@
 
 [日本語](https://github.com/Dekokiyo/TheOtherRolesGM-KiyoMugi-Edition/blob/main/Readme_JP.md)\
 [English](https://github.com/Dekokiyo/TheOtherRolesGM-KiyoMugi-Edition/blob/main/Readme_EN.md)
+[汉语]
